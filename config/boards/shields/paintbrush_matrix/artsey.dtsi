@@ -53,7 +53,6 @@
 *****************************************/
 //#define ARDUX_RIGHT 1
 //#define ARDUX_LEFT 1
-//#define ARDUX_BIG 1
 // If you use COLEMAK as your standard keyboard layout, you may want this
 //     This define will make base ardux keys and N more in line with COLEMAK
 //#define ARDUX_COLEMAK 1
@@ -77,9 +76,6 @@
 // #define KEY_N 5
 // #define KEY_I 6
 // #define KEY_O 7
-// Big ardux F1-12 layer keys for combo
-// #define KEY_F_TOP -1
-// #define KEY_F_BOTTOM -1
 
 /*****************************************
  * Define key position offsets in main keymap
@@ -210,8 +206,7 @@
 #define LAYER_ID_NAVIGATION 4
 #define LAYER_ID_BT_SEL 5
 #define LAYER_ID_CUSTOM 6
-#define LAYER_ID_BIG_SYM 7
-#define LAYER_ID_FUNC 8
+#define LAYER_ID_FUNC 7
 
 /*****************************************
  * Standard ARDUX combo definitions
@@ -363,6 +358,7 @@
 			>;
 		};
 		#endif
+
 		numbers {
 			label = "Number";
 			bindings = <
@@ -373,6 +369,7 @@
 				TRAILING_NONES
 			>;
 		};
+
 		symbols {
 			label = "Symbol";
 			bindings = <
@@ -383,6 +380,7 @@
 				TRAILING_NONES
 			>;
 		};
+
 		parentheticals {
 			label = "Paren";
 			bindings = <
@@ -393,6 +391,7 @@
 				TRAILING_NONES
 			>;
 		};
+
 		navigation {
 			label = "Nav";
 			bindings = <
@@ -403,6 +402,7 @@
 				TRAILING_NONES
 			>;
 		};
+
 		bt {
 			label = "BT";
 			bindings = <
@@ -413,6 +413,7 @@
 				TRAILING_NONES
 			>;
 		};
+		
 		func {
 			label = "FUNC";
 			bindings = <
