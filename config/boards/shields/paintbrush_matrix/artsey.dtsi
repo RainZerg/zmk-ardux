@@ -359,7 +359,7 @@
 		};
 		#endif
 
-		numbers {
+  /	numbers {
 			label = "Number";
 			bindings = <
 				LEADING_NONES
