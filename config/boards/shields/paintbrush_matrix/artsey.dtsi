@@ -340,7 +340,6 @@
  * Standard ARDUX layer definitions
  * !!!!!!!!!! FOR LEFT HANDED USE !!!!!!!!!!
  *****************************************/
-#if defined ARDUX_LEFT
 / {
 	keymap {
 		compatible = "zmk,keymap";
@@ -352,14 +351,10 @@
 				MIDDLE_NONES
 				&layer_custom_kp LAYER_ID_CUSTOM ARDUX_BASE_O          &kp ARDUX_BASE_I     &kp ARDUX_BASE_N     &layer_symbols_kp LAYER_ID_SYMBOLS ARDUX_BASE_E
 				TRAILING_NONES
-				#if defined CUSTOM_THUMB
-				CUSTOM_THUMB
-				#endif
 			>;
 		};
-		#endif
 
-  /	numbers {
+		numbers {
 			label = "Number";
 			bindings = <
 				LEADING_NONES
