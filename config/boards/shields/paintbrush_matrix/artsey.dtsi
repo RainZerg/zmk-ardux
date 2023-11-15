@@ -211,8 +211,7 @@
 #define LAYER_ID_BT_SEL 5
 #define LAYER_ID_CUSTOM 6
 #define LAYER_ID_BIG_SYM 7
-#define LAYER_ID_BIG_FUNCTION 8
-#define LAYER_ID_FUNC 9
+#define LAYER_ID_FUNC 8
 
 /*****************************************
  * Standard ARDUX combo definitions
@@ -224,10 +223,6 @@
 		/*****************************************
 		 * 2 key combos
 		 *****************************************/
-		// Function layer doesn't apply to non-big ardux presently
-		#if defined ARDUX_BIG
-		combo_layer_functions { key-positions = <KEY_F_TOP KEY_F_BOTTOM>; bindings = <&sl LAYER_ID_BIG_FUNCTION>; };
-		#endif
 		combo_enter      { timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_A KEY_E>; bindings = <&kp ENTER>; };
 		combo_control    { timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_E KEY_S>; bindings = <&sk LCTRL>; };
 		combo_gui        { timeout-ms = <TIMEOUT_COMBO_2>; key-positions = <KEY_N KEY_S>; bindings = <&sk LGUI>; };
@@ -353,22 +348,7 @@
 / {
 	keymap {
 		compatible = "zmk,keymap";
-		#if defined ARDUX_BIG
-		base {
-			label = "*ARDUX*";
-			bindings = <
-				BIG_LEADING_NONES
-				&kp MINUS            &layer_parentheticals_kp LAYER_ID_PARENTHETICALS ARDUX_BASE_A    &kp ARDUX_BASE_R     &kp ARDUX_BASE_T     &layer_numbers_kp LAYER_ID_NUMBERS ARDUX_BASE_S
-				BIG_BETWEEN_ROW_ONE_TWO_NONES
-				&sk LSHFT            &layer_symbols_kp LAYER_ID_SYMBOLS ARDUX_BASE_E                  &kp ARDUX_BASE_N     &kp ARDUX_BASE_I     &layer_custom_kp LAYER_ID_CUSTOM ARDUX_BASE_O
-				BIG_BETWEEN_ROW_TWO_THREE_NONES
-				&kp TAB              &kp EQUAL                                                         &kp DEL               &kp AT                &ctrl_alt_kp LALT LCTRL
-				BIG_BETWEEN_ROW_THREE_THUMBS
-				&kp ENTER            &kp SPACE                                                         &mo LAYER_ID_BIG_SYM
-				BIG_TRAILING_NONES
-			>;
-		};
-		#else
+		
 		base {
 			label = "ARDUX";
 			bindings = <
@@ -433,37 +413,6 @@
 				TRAILING_NONES
 			>;
 		};
-		ARDUX_LAYER_CUSTOM
-		#if defined ARDUX_BIG
-		big_ardux_symbol {
-			label = "*Symbol*";
-			bindings = <
-				BIG_LEADING_NONES
-				&kp GRAVE &kp HASH  &kp LBRC &kp RBRC &kp CARET
-				BIG_BETWEEN_ROW_ONE_TWO_NONES
-				&kp BSLH  &kp DLLR  &kp LPAR &kp RPAR &kp AMPS
-				BIG_BETWEEN_ROW_TWO_THREE_NONES
-				&kp PIPE  &kp PRCNT &kp LBKT &kp RBKT &kp ASTRK
-				BIG_BETWEEN_ROW_THREE_THUMBS
-				&trans    &kp SEMI  &none
-				BIG_TRAILING_NONES
-			>;
-		};
-		big_ardux_function {
-			label = "*Func*";
-			bindings = <
-				BIG_LEADING_NONES
-				&none  &kp F1 &kp F2  &kp F3  &kp F4
-				BIG_BETWEEN_ROW_ONE_TWO_NONES
-				&none  &kp F5 &kp F6  &kp F7  &kp F8
-				BIG_BETWEEN_ROW_TWO_THREE_NONES
-				&none  &kp F9 &kp F10 &kp F11 &kp F12
-				BIG_BETWEEN_ROW_THREE_THUMBS
-				&trans &none   &none
-				BIG_TRAILING_NONES
-			>;
-		};
-		#endif
 	};
 };
 #endif
@@ -476,22 +425,6 @@
 / {
 	keymap {
 		compatible = "zmk,keymap";
-		#if defined ARDUX_BIG
-		base {
-			label = "*ARDUX*";
-			bindings = <
-				BIG_LEADING_NONES
-				&layer_numbers_kp LAYER_ID_NUMBERS ARDUX_BASE_S    &kp ARDUX_BASE_T     &kp ARDUX_BASE_R     &layer_parentheticals_kp LAYER_ID_PARENTHETICALS ARDUX_BASE_A &kp MINUS
-				BIG_BETWEEN_ROW_ONE_TWO_NONES
-				&layer_custom_kp LAYER_ID_CUSTOM ARDUX_BASE_O      &kp ARDUX_BASE_I     &kp ARDUX_BASE_N     &layer_symbols_kp LAYER_ID_SYMBOLS ARDUX_BASE_E               &sk LSHFT
-				BIG_BETWEEN_ROW_TWO_THREE_NONES
-				&ctrl_alt_kp LALT LCTRL                             &kp AT                &kp DEL               &kp EQUAL                                                      &kp TAB
-				BIG_BETWEEN_ROW_THREE_THUMBS
-				&mo LAYER_ID_BIG_SYM                                &kp SPACE             &kp ENTER
-				BIG_TRAILING_NONES
-			>;
-		};
-		#else
 		base {
 			label = "ARDUX";
 			bindings = <
@@ -566,38 +499,6 @@
 				TRAILING_NONES
 			>;
 		};
-
-		ARDUX_LAYER_CUSTOM
-		#if defined ARDUX_BIG
-		big_ardux_symbol {
-			label = "*Symbol*";
-			bindings = <
-				BIG_LEADING_NONES
-				&kp CARET &kp LBRC &kp RBRC &kp HASH  &kp GRAVE
-				BIG_BETWEEN_ROW_ONE_TWO_NONES
-				&kp AMPS  &kp LPAR &kp RPAR &kp DLLR  &kp BSLH
-				BIG_BETWEEN_ROW_TWO_THREE_NONES
-				&kp ASTRK &kp LBKT &kp RBKT &kp PRCNT &kp PIPE
-				BIG_BETWEEN_ROW_THREE_THUMBS
-				&none     &kp SEMI &none
-				BIG_TRAILING_NONES
-			>;
-		};
-		big_ardux_function {
-			label = "*Func*";
-			bindings = <
-				BIG_LEADING_NONES
-				&kp F4  &kp F3  &kp F2  &kp F1  &none
-				BIG_BETWEEN_ROW_ONE_TWO_NONES
-				&kp F8  &kp F7  &kp F6  &kp F5  &none
-				BIG_BETWEEN_ROW_TWO_THREE_NONES
-				&kp F12 &kp F11 &kp F10 &kp F9 &none
-				BIG_BETWEEN_ROW_THREE_THUMBS
-				&none   &none   &none
-				BIG_TRAILING_NONES
-			>;
-		};
-		#endif
 	};
 };
 #endif
